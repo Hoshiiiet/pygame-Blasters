@@ -26,6 +26,10 @@ class Game :
         self.gameSpace = GameArea(self.display)
         self.bg = pygame.image.load('misc/img/bg.png')
 
+
+        self.font = pygame.font.SysFont('calibri', 30, italic = False, bold = False)
+        self.text = self.font.render('Test render', True, (255,255,255))
+
     def run(self) -> None:
         while True:
             self.display.blit(self.bg, (0,0))
@@ -35,6 +39,8 @@ class Game :
             self.plane.update((self.movement[1] - self.movement[0],
                                self.movement[3] - self.movement[2]))
             self.plane.render(self.display) ## Render the plane in the Game Space
+
+            self.display.blit(self.text,(screenWidth/2,100))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -65,6 +71,6 @@ class Game :
             self.screen.blit(self.display, (0, 0)) ## Render the gamespace inside the window
             pygame.display.update()
             self.clock.tick(30)
-
+    
 
 Game().run()
