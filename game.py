@@ -10,7 +10,6 @@ class Game :
     def __init__(self) -> None:
         pygame.init()
         
-        
         ## window size which can be adjusted adjusted independently
         self.screen = pygame.display.set_mode((screenWidth, screenHeight))
 
@@ -79,5 +78,4 @@ class Game :
             pygame.display.update()
             self.clock.tick(30)
     
-
 Game().run()
