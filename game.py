@@ -16,6 +16,7 @@ class Game :
 
         # GAMESPACE DISPLAY can be adjusted adjusted independently
         self.display = pygame.Surface((areaSize,  screenHeight)) 
+        self.guiDisplay = pygame.Surface((guiSize, screenHeight))
 
         self.clock = pygame.time.Clock()
         self.movement = [False, False, False, False]
@@ -26,9 +27,7 @@ class Game :
         self.gameSpace = GameArea(self.display)
         self.bg = pygame.image.load('misc/img/bg.png')
 
-
         self.font = pygame.font.SysFont('calibri', 30, italic = False, bold = False)
-        self.text = self.font.render('Test render', True, (255,255,255))
 
     def run(self) -> None:
         while True:
@@ -40,7 +39,12 @@ class Game :
                                self.movement[3] - self.movement[2]))
             self.plane.render(self.display) ## Render the plane in the Game Space
 
-            self.display.blit(self.text,(screenWidth/2,100))
+
+            # Just example in GUI
+            self.guiDisplay.fill((0 ,0 ,255)) #Display blue on this area
+            self.text = self.font.render(f"Position: {self.plane.pos}", True, (255,255,255))
+            self.guiDisplay.blit((self.text), (0,0))
+            
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -69,6 +73,7 @@ class Game :
 
 
             self.screen.blit(self.display, (0, 0)) ## Render the gamespace inside the window
+            self.screen.blit(self.guiDisplay, guiPosition) ## Render GUI Space inside the screen window
             pygame.display.update()
             self.clock.tick(30)
     

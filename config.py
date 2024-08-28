@@ -11,9 +11,13 @@ playerHeight = 40
 playerPos = (128, 575)
 
 # Window Size
-screenWidth = 480
+screenWidth = 980
 screenHeight = 640
 
 # Game Area Size
 areaSize = 288
 space = 256
+
+# GUI Area
+guiSize =   screenWidth - areaSize
+guiPosition = (areaSize, 0)
