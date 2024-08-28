@@ -21,7 +21,7 @@ class Game :
         self.movement = [False, False, False, False]
 
         ## IMAGE INIT IS INSIDE THE PLANE
-        self.plane = TopDownEntity(self, 'player', playerPos, (1,1),'misc/img/pl1.png') 
+        self.plane = TopDownEntity(self, 'player', playerPos, (1, 1), 'misc/img/pl2-export.png') 
 
         self.gameSpace = GameArea(self.display)
         self.bg = pygame.image.load('misc/img/bg.png')
@@ -30,16 +30,16 @@ class Game :
 
     def run(self) -> None:
         while True:
-            pygame.display.set_caption(f'Blasters (FPS: {self.clock.get_fps()})')
+            pygame.display.set_caption(f'Blasters (FPS: {self.clock.get_fps() })')
 
             self.display.blit(self.bg, (0,0))
-            self.gameSpace.InSpace()
 
             # movement update
             self.plane.update((self.movement[1] - self.movement[0],
                                self.movement[3] - self.movement[2]))
             self.plane.render(self.display) ## Render the plane in the Game Space
 
+            self.gameSpace.InSpace()
 
             # Just example in GUI
             self.guiDisplay.fill((0 ,0 ,255)) #Display blue on this area

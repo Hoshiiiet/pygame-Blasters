@@ -12,9 +12,10 @@ class TopDownEntity :
         self.velocity = 4
 
         # initializing Plane/Icon Image 
-        self.img = pygame.image.load('misc/img/pl1.png')
+        self.img = pygame.image.load(img)
         self.iconRect = self.img.get_rect()
         self.iconRect.center = playerPos
+        print(self.img.get_rect())
 
     def update(self, movement = (0, 0)): ## updates movement
         moveX = movement[0] * self.velocity
@@ -29,7 +30,7 @@ class TopDownEntity :
         surf.blit(self.img, self.pos)
 
     def boundary(self, xMove, yMove):
-        xPos = min(max(5, xMove), areaSize - playerWidth - 5)
-        yPos = min(max(5, yMove), screenHeight - playerHeight - 5)
+        xPos = min(max(5, xMove), areaSize - self.img.get_rect().width - 5)
+        yPos = min(max(5, yMove), screenHeight - self.img.get_rect().height - 5)
 
         return xPos, yPos
