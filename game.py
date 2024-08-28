@@ -9,7 +9,7 @@ from scripts.entity import TopDownEntity # Referenes from Entity Class
 class Game :
     def __init__(self) -> None:
         pygame.init()
-        pygame.display.set_caption('Blasters')
+        
         
         ## window size which can be adjusted adjusted independently
         self.screen = pygame.display.set_mode((screenWidth, screenHeight))
@@ -31,6 +31,8 @@ class Game :
 
     def run(self) -> None:
         while True:
+            pygame.display.set_caption(f'Blasters (FPS: {self.clock.get_fps()})')
+
             self.display.blit(self.bg, (0,0))
             self.gameSpace.InSpace()
 
