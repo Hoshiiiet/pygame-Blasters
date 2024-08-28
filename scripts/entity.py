@@ -4,12 +4,17 @@ from config import *
 # Used for making entity
 
 class TopDownEntity :
-    def __init__(self, game, e_type, pos, size) -> None:
+    def __init__(self, game, e_type, pos, size, img) -> None:
         self.game = game
         self.type = e_type
         self.pos = list(pos)
         self.size = size
         self.velocity = 4
+
+        # initializing Plane/Icon Image 
+        self.img = pygame.image.load('misc/img/pl1.png')
+        self.iconRect = self.img.get_rect()
+        self.iconRect.center = playerPos
 
     def update(self, movement = (0, 0)): ## updates movement
         moveX = movement[0] * self.velocity
@@ -21,7 +26,7 @@ class TopDownEntity :
         self.pos = bounded_pos
 
     def render(self, surf):
-        surf.blit(self.game.assets['player'], self.pos)
+        surf.blit(self.img, self.pos)
 
     def boundary(self, xMove, yMove):
         xPos = min(max(5, xMove), areaSize - playerWidth - 5)
